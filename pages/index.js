@@ -1,65 +1,39 @@
-import Link from 'next/link'
 import dbConnect from '../lib/dbConnect'
-import Pet from '../models/Pet'
+import Prueba from '../models/Anime.jsx'
 
-const Index = ({ pets }) => (
+export default function Index ({pruebas}) {
+  
+ return(
   <>
-    {/* Create a card for each pet */}
-    {pets.map((pet) => (
-      <div key={pet._id}>
-        <div className="card">
-          <img src={pet.image_url} />
-          <h5 className="pet-name">{pet.name}</h5>
-          <div className="main-content">
-            <p className="pet-name">{pet.name}</p>
-            <p className="owner">Owner: {pet.owner_name}</p>
-
-            {/* Extra Pet Info: Likes and Dislikes */}
-            <div className="likes info">
-              <p className="label">Likes</p>
-              <ul>
-                {pet.likes.map((data, index) => (
-                  <li key={index}>{data} </li>
-                ))}
-              </ul>
-            </div>
-            <div className="dislikes info">
-              <p className="label">Dislikes</p>
-              <ul>
-                {pet.dislikes.map((data, index) => (
-                  <li key={index}>{data} </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="btn-container">
-              <Link href="/[id]/edit" as={`/${pet._id}/edit`} legacyBehavior>
-                <button className="btn edit">Edit</button>
-              </Link>
-              <Link href="/[id]" as={`/${pet._id}`} legacyBehavior>
-                <button className="btn view">View</button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    ))}
+  <h1>PERSONAJES DE ANIME</h1>
+  {pruebas.map((val)=>{
+								
+                return(
+                  <div key={val._id}>
+                      {val.pj}
+                  </div>
+                )
+          })} 
   </>
-)
-
-/* Retrieves pet(s) data from mongodb database */
-export async function getServerSideProps() {
-  await dbConnect()
-
-  /* find all the data in our database */
-  const result = await Pet.find({})
-  const pets = result.map((doc) => {
-    const pet = doc.toObject()
-    pet._id = pet._id.toString()
-    return pet
-  })
-
-  return { props: { pets: pets } }
+ )
+    
 }
 
-export default Index
+
+export async function getServerSideProps() {
+  try {
+      await dbConnect()
+
+      const res = await Prueba.find({})
+      const pruebas = res.map((doc)=>{
+        const prueba = doc.toObject()
+        prueba._id = `${prueba._id}`
+        return prueba
+      })
+
+      return { props: {pruebas: pruebas}}
+  } catch (error) {
+    console.log(error)
+  }
+
+}
