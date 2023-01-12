@@ -5,6 +5,7 @@ export default function Index ({pruebas}) {
   
  return(
   <>
+  
   <h1>PERSONAJES DE ANIME</h1>
   {pruebas.map((val)=>{
 								
@@ -28,6 +29,7 @@ export async function getServerSideProps() {
       const pruebas = res.map((doc)=>{
         const prueba = doc.toObject()
         prueba._id = `${prueba._id}`
+       
         return prueba
       })
 
