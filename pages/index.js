@@ -1,12 +1,15 @@
 import dbConnect from '../lib/dbConnect'
 import Prueba from '../models/Anime.jsx'
-
+import Link from 'next/link'
 export default function Index ({pruebas}) {
   
  return(
   <>
   
   <h1>PERSONAJES DE ANIME</h1>
+  <Link href="/new">
+     Agregar
+  </Link>
   {pruebas.map((val)=>{
 								
                 return(
