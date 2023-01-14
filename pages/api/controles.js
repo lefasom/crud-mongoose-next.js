@@ -1,10 +1,10 @@
 import dbConnect from '../../lib/dbConnect'
-import Prueba from '../../models/Anime.jsx'
+import Persona from '../../models/Persona.jsx'
 
 export default async function handler (req, res) {
     await dbConnect()
 
-    //POST api/personaje
+    //POST api/controles
 
     const {method} = req
 
@@ -12,17 +12,17 @@ export default async function handler (req, res) {
         case 'POST':
             try {
                 
-                const prueba = new Prueba(req.body)
-                await prueba.save()
+                const persona = new Persona(req.body)
+                await persona.save()
 
-                return res.status(200).json({success:true, prueba})
+                return res.status(200).json({success:true, persona})
 
             } catch (error) {
                 return res.status(400).json({success: false, error: 'falla de servidor'})
             }
     
         default:
-            return res.status(500).json({success: false, error})
+            return res.status(500).json({success: false,  error: 'falla de servidor'})
 
     }
 }

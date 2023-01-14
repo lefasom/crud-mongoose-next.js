@@ -1,9 +1,14 @@
 import mongoose from 'mongoose'
 
 const PruebaSchema = new mongoose.Schema({
-    pj: {
+    nombre: {
       type: String,
-      required: [true, 'Por favor ingresa un personaje.'],
+      required: [true, 'Por favor ingresa nombre.'],
+      maxlength: [60, 'Name cannot be more than 60 characters'],
+    },
+    edad: {
+      type: String,
+      required: [true, 'Por favor ingresa edad.'],
       maxlength: [60, 'Name cannot be more than 60 characters'],
     }
    
