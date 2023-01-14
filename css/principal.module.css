@@ -1,0 +1,61 @@
+.a{
+    background-color: rgb(1, 150, 100);
+    border-radius: 100%;
+    color: aliceblue;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 5px;
+    text-decoration: none;
+}
+.tabla{
+    margin-top: 10px;
+    font-family: sans-serif;
+}
+.flex {
+    display: flex;
+    border: 1px solid gray;
+}
+.cabeza {
+    border-left: 1px solid gray;
+   width: 33vw;
+   text-align: center;
+   font-weight: 600;
+   padding: 10px;
+}
+.nombre, .edad, .acciones {
+    border-left: 1px solid gray;
+    width: 33vw;
+
+   padding: 10px;
+    color: #555;
+}
+.acciones .buttonEliminar{
+   margin: 0 5px;
+   background-color: orangered;
+   border: 0;
+   color: aliceblue;
+   font-weight: 600;
+   padding: 5px;
+   cursor: pointer;
+
+}
+.acciones .buttonEditar{
+    margin: 0 5px;
+    background-color: cyan;
+    border: 0;
+    color: aliceblue;
+    font-weight: 600;
+    padding: 5px;
+    cursor: pointer;
+ 
+ }
+.acciones .buttonEditar:hover{
+    background-color: rgb(3, 199, 199);
+  
+}
+.acciones .buttonEliminar:hover{
+    background-color:rgb(155, 42, 0);
+  
+}
+ 
+ 
