@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import styles from '../css/new.module.css'
 
 function New() {
     const router = useRouter()
@@ -42,7 +43,7 @@ function New() {
 
   return (<>
     <div>Formulario</div>
-    <form onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={handleSubmit}>
         <input 
             type="text" 
             placeholder='Nombre'
