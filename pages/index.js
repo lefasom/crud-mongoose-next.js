@@ -1,9 +1,11 @@
+import { useRouter } from 'next/router'
 import dbConnect from '../lib/dbConnect'
 import Persona from '../models/Persona.jsx'
 import Link from 'next/link'
 import styles from '../css/principal.module.css'
+
 export default function Index ({pruebas}) {
-  
+  const router = useRouter()
  return(
   <>
   
@@ -34,8 +36,11 @@ export default function Index ({pruebas}) {
                         {val.edad}
                       </div>
                       <div className={styles.acciones} >
-                        <button className={styles.buttonEliminar}>Eliminar</button> 
-                        <button className={styles.buttonEditar}>Editar</button>  
+                        <Link 
+                          href={`/${val._id}`}
+                        >
+                         Edit
+                        </Link>
                       </div>
                     </div>
                     
